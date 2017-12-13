@@ -1,0 +1,30 @@
+{
+    "manifest_version": 2,
+
+    "name": "portal Auto Login",
+    "description": "portal is so damn stupid also",
+    "version": "1.0",
+    "icons":{
+      "16":"party-hat16.png",
+      "48":"party-hat48.png",
+      "128":"party-hat128.png"
+    },
+    "browser_action":
+    {
+        "default_icon": "party-hat16.png",
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "activeTab",
+        "storage"
+    ],
+    "content_scripts": [
+    {
+        "matches": ["https://portal.nctu.edu.tw/portal/login.php", "https://portal.nctu.edu.tw/portal/chkpas.php?"],
+        "js": ["jquery-3.2.1.slim.min.js","login.js"],
+        "permissions":["storage"]
+    }],
+    "background":{
+      "script" : ["event.js"]
+    }
+}

@@ -1,0 +1,86 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+
+<html>
+
+<head>
+    <script src ="jquery-3.2.1.js"></script>
+    <script src="test.js"></script>
+    
+    <title>Getting Started Extension's Popup</title>
+    <style type="text/css">
+    body {
+        margin: 10px;
+        margin-right: 50px;
+        width: 400px;
+    }
+
+    input[type=text] ,input[type=password]{
+        width: 100%;
+        padding: 12px 16px;
+        margin: 8px;
+        font-size: 15px;
+        border-radius: 4px;
+        margin-left: 10px;
+        box-sizing: border-box;
+        display: inline-block;
+    }
+
+    label {
+        font-size: 20px;
+    }
+
+    input[type=submit] {
+        margin: 8px;
+        margin-left: 10px;
+        width: 100%;
+        cursor: pointer;
+        padding: 10px 10px;
+        border-radius: 4px;
+        border: none;
+        background-color: #4CAF50;
+        color: white;
+        font-size: 15px;
+    }
+    input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+
+
+
+    #container {
+        align-items: center;
+        display: flex;
+        /*justify-content: space-between;*/
+    }
+    </style>
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+    -->
+    
+</head>
+
+<body>
+    <h1 style="text-align: center;padding-top: 5px;margin-bottom: -5px">portal auto login</h1>
+    <input type="checkbox" id="checkbox_1" checked="checked" style="float:right;"><span style="float:right;padding-right: 5px;font-size: 15px;">Auto login</span>
+
+    <div id="login">
+        <form action="">
+            <label for="Account">Account:</label>
+            <input type="text" id="Account" placeholder="Student ID...">
+            <label for="Password">Password:</label>
+            <input type="password" id="Password" placeholder="Password...">
+            <input type="submit" value="Save Login Info" id="Save_Login">
+        </form>
+    </div>
+</body>
+
+</html>
