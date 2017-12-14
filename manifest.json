@@ -16,12 +16,13 @@
     },
     "permissions": [
         "activeTab",
-        "storage"
+        "storage",
+        "*://nasa.cs.nctu.edu.tw/*"
     ],
     "content_scripts": [
     {
         "matches": ["https://portal.nctu.edu.tw/portal/login.php", "https://portal.nctu.edu.tw/portal/chkpas.php?"],
-        "js": ["jquery-3.2.1.slim.min.js","login.js"],
+        "js": ["jquery-3.2.1.js","login.js"],
         "permissions":["storage"]
     }],
     "background":{
