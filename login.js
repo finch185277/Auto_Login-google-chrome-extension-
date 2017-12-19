@@ -106,7 +106,6 @@ function login() {
 	c.height = 90;
 	var ctx = c.getContext('2d');
 	var img = document.getElementById('captcha');
-	console.log(img);
 	ctx.drawImage(img, 0, 0);
 	var base64String = c.toDataURL();
 	console.log(base64String);
@@ -160,8 +159,11 @@ function login() {
 			console.log(toggle_state);
 		    }
 		    if (toggle_state == true && accountSet) {
-			//loginBtn.click();
+			loginBtn.click();
 			//top.location.replace('login.php');
+            //$(document).ready(function() {
+            //    top.location.replace('login.php');
+            //});
 			
 			
 		    }
