@@ -1,6 +1,19 @@
 $(document).ready(function() {
+    var disabler = function () {
+        window.alert = function() {};	 
+    };
+    var dis = "(" + disabler.toString() + ")()";
+    var ele = document.createElement("script");
+    document.documentElement.appendChild(ele);
+    ele.parentNode.removeChild(ele);
+    //alert("innnnnnnder");
     login();
+    
 });
+//window.alert = function() {};	   
+//alert("innnnnnnder");
+//console.log("hellos"); 
+
 //==============================================================================
 //++
 
@@ -36,7 +49,7 @@ function login() {
     var accountSet = true;
     var png ;
     
-
+    
     chrome.storage.sync.get(["Account", "Password"], function(User) {
         account = User.Account;
         password = User.Password;
@@ -164,9 +177,9 @@ function login() {
             //$(document).ready(function() {
             //    top.location.replace('login.php');
             //});
-			
-			
+			//window.alert = function() {};			
 		    }
+            //window.alert = function() {};	
 		});
 		//}
 	    }
