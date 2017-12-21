@@ -18,9 +18,8 @@ function login() {
     //Sync account and password
     var account, password, number;
     var accountSet = true;
-    var png ;
 
-    //==============================================================================
+    //================================= base64 =============================================
     //++
 
     function dataURItoBlob(dataURI) {
@@ -44,7 +43,7 @@ function login() {
     }
 
     //++
-    //==================================================================================
+    //=================================== base64 ===============================================
     // var aaa = function(){
     // };
 
@@ -53,7 +52,6 @@ function login() {
     //     //Sync account and password
     //     var account, password, number;
     //     var accountSet = true;
-    //     var png ;
     
     
     chrome.storage.sync.get(["Account", "Password"], function(User) {
@@ -76,41 +74,18 @@ function login() {
         else {
             console.log("can't find password");
         }
-	// var nn = 10;
-	// while(nn >= 0){
-
+	//=================================== refresh image test ============
+	//++
 	var refreshBtn =$("#seccode_refresh");
 	console.log(refreshBtn);
-	//refreshBtn.click();
-	// refreshBtn.trigger();
-	// $("#seccode_refresh").click(function() {
-	//     $("#captcha").attr("src", "/captcha/pic.php?t=" + new Date().getTime());
-	// });
-	// var toggle_state;
-	// chrome.storage.sync.get("toggle", function(result) {
-	//     toggle_state = result.toggle;
-	//     //console.log("toggle_state = " + toggle_state);
-	//     if (toggle_state === undefined) {
-	// 	console.log(toggle_state);
-	//     }
-	//     if (toggle_state == true && accountSet) {
-	// 	refreshBtn[0].click();
-	// 	console.log(1);
-		
-	// 	//top.location.replace('login.php');
-	// 	//$(document).ready(function() {
-	// 	//    top.location.replace('login.php');
-	// 	//});
-	// 	//window.alert = function() {};			
-	//     }
-	//     //window.alert = function() {};	
-	// });
 	refreshBtn[0].click();
-	//     nn--;
-	// }
+	//++
+	//====================================== refresh ==========
 
 	
 
+	//=============================== future =========
+	//++
 	
 	// $("#captcha").ready(aaa);
 	// var flag = false;
@@ -129,31 +104,14 @@ function login() {
 	//     //     
 	//     //     #refresh captcha button click
 	// })
+	//++
+	//====================================================
 
-	// var refreshBtn =$("#seccode_refresh");
-	// refreshBtn.click();
-	// var num = 10;
-
-	// while(num >= 0) {
-	//     if($("#captcha").ready(function() {
-	
-	// 	var refreshBtn = $("#seccode_refresh");
-	// 	refreshBtn.click();
-	// 	num--;
-	// 	console.log("ready");
-	// 	console.log(num);
-	// 	return false;
-	//     })) {
-	// 	console.log("if");
-	// 	console.log(num);
-	// 	num--;
-	//     }
-	// }
 	
         // var image = $("#captcha");
         // console.log(image);
 
-	//============================================================================
+	//======================================= canvas =====================================
 	//++
 	var c = document.createElement('canvas');
 	c.width = 160;
@@ -176,66 +134,66 @@ function login() {
         a.href = downloadUrl;
         a.download = "aaa.png";
         document.body.appendChild(a);
-	//a.click();
+	//a.click(); // download image to test
 	//++		
-	//===============================================================================
+	//================================== canvas =============================================
 	//function post_img() {
-	// $.ajax({
-	//     url : "https://nasa.cs.nctu.edu.tw/sap/2017/hw2/captcha-solver/api/",
-	//     data : form_data,
-	//     headers: {
-	// 	"Accept": "*/*"
-	//     },
-	//     cache: false,
-	//     //contentType: "multipart/form-data",
-	//     contentType: false,
-	//     processData: false,
-	//     type: 'POST',
-	//     success : function(data,status){
-    	// 	c
-	// onsole.log("Data: " + data + "\nStatus: " + status);
-	// // //console.log(status);
-	// if(data.startsWith("ERROR")) {
-	//     var refreshBtn =$("#seccode_refresh");
-	//     console.log(refreshBtn);
-	//     refreshBtn.click(function() {
-	// 	//$("#captcha").attr("src", "/captcha/pic.php?t=" + new Date().getTime());
-	// 	login();
-	//     });
-	//     //post_img();
-	// }//else{
+	$.ajax({
+	    url : "https://nasa.cs.nctu.edu.tw/sap/2017/hw2/captcha-solver/api/",
+	    data : form_data,
+	    headers: {
+		"Accept": "*/*"
+	    },
+	    cache: false,
+	    //contentType: "multipart/form-data",
+	    contentType: false,
+	    processData: false,
+	    type: 'POST',
+	    success : function(data,status){
+    		c
+		onsole.log("Data: " + data + "\nStatus: " + status);
+		// //console.log(status);
+		if(data.startsWith("ERROR")) {
+		    var refreshBtn =$("#seccode_refresh");
+		    console.log(refreshBtn);
+		    refreshBtn.click[0](function() {
+			//$("#captcha").attr("src", "/captcha/pic.php?t=" + new Date().getTime());
+			login();
+		    });
+		    //post_img();
+		}//else{
 
-	// if ($("seccode") != null)
-	//     document.getElementById("seccode").value = data;
-	// else {
-	//     console.log("can't find captcha");
-	// }
-	// 	var loginBtn =$("input[name='Submit2']");
-	// 	//if toggle is on : Login
-	// 	var toggle_state;
-	// 	chrome.storage.sync.get("toggle", function(result) {
-	// 	    toggle_state = result.toggle;
-	// 	    //console.log("toggle_state = " + toggle_state);
-	// 	    if (toggle_state === undefined) {
-	// 		console.log(toggle_state);
-	// 	    }
-	// 	    if (toggle_state == true && accountSet) {
-	// 		loginBtn.click();
+		if ($("seccode") != null)
+		    document.getElementById("seccode").value = data;
+		else {
+		    console.log("can't find captcha");
+		}
+		var loginBtn =$("input[name='Submit2']");
+		//if toggle is on : Login
+		var toggle_state;
+		chrome.storage.sync.get("toggle", function(result) {
+		    toggle_state = result.toggle;
+		    //console.log("toggle_state = " + toggle_state);
+		    if (toggle_state === undefined) {
+			console.log(toggle_state);
+		    }
+		    if (toggle_state == true && accountSet) {
+			loginBtn.click();
 
-	// 		//top.location.replace('login.php');
-	// 		//$(document).ready(function() {
-	// 		//    top.location.replace('login.php');
-	// 		//});
-	// 		//window.alert = function() {};			
-	// 	    }
-	// 	    //window.alert = function() {};	
-	// 	});
-	// 	//}
-	//     }
-	// });//ajax()
+			//top.location.replace('login.php');
+			//$(document).ready(function() {
+			//    top.location.replace('login.php');
+			//});
+			//window.alert = function() {};			
+		    }
+		    //window.alert = function() {};	
+		});
+		//}
+	    }
+	});//ajax()
 
 	
-	//console.log("end test");
+	console.log("end test");
 	//     }
 	// }); 
 	
