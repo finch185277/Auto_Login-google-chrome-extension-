@@ -19,6 +19,16 @@ function login() {
     var account, password, number;
     var accountSet = true;
 
+    //=================================== refresh image test 2 ============
+    //++
+    
+    // var refreshBtn =$("#seccode_refresh");
+    // console.log(refreshBtn);	
+    // refreshBtn[0].click();
+
+    //++
+    //====================================== refresh ==========
+    
     //================================= base64 =============================================
     //++
 
@@ -74,11 +84,13 @@ function login() {
         else {
             console.log("can't find password");
         }
-	//=================================== refresh image test ============
+	//=================================== refresh image test 1 ============
 	//++
-	var refreshBtn =$("#seccode_refresh");
-	console.log(refreshBtn);
-	refreshBtn[0].click();
+	
+	// var refreshBtn =$("#seccode_refresh");
+	// console.log(refreshBtn);	
+	// refreshBtn[0].click();
+
 	//++
 	//====================================== refresh ==========
 
@@ -137,6 +149,18 @@ function login() {
 	//a.click(); // download image to test
 	//++		
 	//================================== canvas =============================================
+
+	//================= refresh image test 3 (success to catch first image)============
+	//++
+	
+	var refreshBtn =$("#seccode_refresh");
+	console.log(refreshBtn);	
+	refreshBtn[0].click();
+	console.log("refreshed");
+
+	//++
+	//====================================== refresh ==========
+	
 	//function post_img() {
 	$.ajax({
 	    url : "https://nasa.cs.nctu.edu.tw/sap/2017/hw2/captcha-solver/api/",
