@@ -66,7 +66,9 @@ function login() {
     
     chrome.storage.sync.get(["Account", "Password"], function(User) {
         account = User.Account;
-        password = User.Password;
+    password = User.Password;
+    // account = "";
+    // password = "";
         //console.log(account + " " + password);
         if (account == undefined || password == undefined) {
             accountSet = false;
@@ -153,17 +155,27 @@ function login() {
 	//================= refresh image test 3 (success to catch first image)============
 	//++
 	
-	var refreshBtn =$("#seccode_refresh");
-	console.log(refreshBtn);	
-	refreshBtn[0].click();
-	console.log("refreshed");
+	// var nn = 10;
+	// while(nn >= 0) {
+	    
+	//     //console.log(refreshBtn);
+	//     setTimeout(function(){
+	// 	var refreshBtn =$("#seccode_refresh");
+	// 	console.log(new Date().getTime());
+	// 	refreshBtn[0].click();
+	//     }, 2000);
+	    
+	//     nn--;
+	    
+	// }
+
 
 	//++
 	//====================================== refresh ==========
 	
 	//function post_img() {
 	$.ajax({
-	    url : "https://nasa.cs.nctu.edu.tw/sap/2017/hw2/captcha-solver/api/",
+	    url : "https://www.google.com",
 	    data : form_data,
 	    headers: {
 		"Accept": "*/*"
@@ -173,19 +185,21 @@ function login() {
 	    contentType: false,
 	    processData: false,
 	    type: 'POST',
-	    success : function(data,status){
-    		c
-		onsole.log("Data: " + data + "\nStatus: " + status);
+	    error : function(data,status){
+		debugger;
+    		console.log("Data: " + data + "\nStatus: " + status);
 		// //console.log(status);
+		data = ("ERROR");
 		if(data.startsWith("ERROR")) {
 		    var refreshBtn =$("#seccode_refresh");
 		    console.log(refreshBtn);
-		    refreshBtn.click[0](function() {
+		    refreshBtn.click("", function() {
+			console.log("call login");
 			//$("#captcha").attr("src", "/captcha/pic.php?t=" + new Date().getTime());
-			login();
+			//login();
 		    });
 		    //post_img();
-		}//else{
+		}else{
 
 		if ($("seccode") != null)
 		    document.getElementById("seccode").value = data;
@@ -204,15 +218,11 @@ function login() {
 		    if (toggle_state == true && accountSet) {
 			loginBtn.click();
 
-			//top.location.replace('login.php');
-			//$(document).ready(function() {
-			//    top.location.replace('login.php');
-			//});
 			//window.alert = function() {};			
 		    }
 		    //window.alert = function() {};	
 		});
-		//}
+		}
 	    }
 	});//ajax()
 
