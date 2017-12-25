@@ -236,3 +236,37 @@ function login() {
     }
 			   );
 }
+
+
+//==================add================
+//++
+
+function post_image(){
+    var img = document.getElementById("captcha");
+    var c = document.createElement('canvas');
+    c.width = img.width;
+    c.height = img.height;
+    var ctx = c.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+    
+    // image to base64
+	var base64String = c.toDataURL();
+	// debugger;
+    $.ajax({
+	method: 'POST',
+        url : "https://140.113.214.183:5000/predict",
+        data : {
+            image: base64String
+		},
+		success: function(data, status, jqXHR){
+			$("#seccode").val(data);
+		},
+		error: function(){
+			console.log("ERROR")
+		}
+    });
+}
+
+
+//++
+//=================add================
