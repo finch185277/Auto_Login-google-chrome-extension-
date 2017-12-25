@@ -66,9 +66,9 @@ function login() {
     
     chrome.storage.sync.get(["Account", "Password"], function(User) {
         account = User.Account;
-    password = User.Password;
-    // account = "";
-    // password = "";
+	password = User.Password;
+	// account = "";
+	// password = "";
         //console.log(account + " " + password);
         if (account == undefined || password == undefined) {
             accountSet = false;
@@ -157,16 +157,16 @@ function login() {
 	
 	// var nn = 10;
 	// while(nn >= 0) {
-	    
+	
 	//     //console.log(refreshBtn);
 	//     setTimeout(function(){
 	// 	var refreshBtn =$("#seccode_refresh");
 	// 	console.log(new Date().getTime());
 	// 	refreshBtn[0].click();
 	//     }, 2000);
-	    
+	
 	//     nn--;
-	    
+	
 	// }
 
 
@@ -174,32 +174,136 @@ function login() {
 	//====================================== refresh ==========
 	
 	//function post_img() {
-	$.ajax({
-	    url : "https://www.google.com",
-	    data : form_data,
-	    headers: {
-		"Accept": "*/*"
-	    },
-	    cache: false,
-	    //contentType: "multipart/form-data",
-	    contentType: false,
-	    processData: false,
-	    type: 'POST',
-	    error : function(data,status){
-		debugger;
-    		console.log("Data: " + data + "\nStatus: " + status);
-		// //console.log(status);
-		data = ("ERROR");
-		if(data.startsWith("ERROR")) {
-		    var refreshBtn =$("#seccode_refresh");
-		    console.log(refreshBtn);
-		    refreshBtn.click("", function() {
-			console.log("call login");
-			//$("#captcha").attr("src", "/captcha/pic.php?t=" + new Date().getTime());
-			//login();
-		    });
-		    //post_img();
-		}else{
+	// $.ajax({
+	//     url : "https://www.google.com",
+	//     data : form_data,
+	//     headers: {
+	// 	"Accept": "*/*"
+	//     },
+	//     cache: false,
+	//     //contentType: "multipart/form-data",
+	//     contentType: false,
+	//     processData: false,
+	//     type: 'POST',
+	//     error : function(data,status){
+	// 	debugger;
+    	// 	console.log("Data: " + data + "\nStatus: " + status);
+	// 	// //console.log(status);
+	// 	data = ("ERROR");
+	// 	if(data.startsWith("ERROR")) {
+	// 	    var refreshBtn =$("#seccode_refresh");
+	// 	    console.log(refreshBtn);
+	// 	    refreshBtn.click("", function() {
+	// 		console.log("call login");
+	// 		//$("#captcha").attr("src", "/captcha/pic.php?t=" + new Date().getTime());
+	// 		//login();
+	// 	    });
+	// 	    //post_img();
+	// 	}else{
+
+	// 	if ($("seccode") != null)
+	// 	    document.getElementById("seccode").value = data;
+	// 	else {
+	// 	    console.log("can't find captcha");
+	// 	}
+	// 	var loginBtn =$("input[name='Submit2']");
+	// 	//if toggle is on : Login
+	// 	var toggle_state;
+	// 	chrome.storage.sync.get("toggle", function(result) {
+	// 	    toggle_state = result.toggle;
+	// 	    //console.log("toggle_state = " + toggle_state);
+	// 	    if (toggle_state === undefined) {
+	// 		console.log(toggle_state);
+	// 	    }
+	// 	    if (toggle_state == true && accountSet) {
+	// 		loginBtn.click();
+
+	// 		//window.alert = function() {};			
+	// 	    }
+	// 	    //window.alert = function() {};	
+	// 	});
+	// 	}
+	//     }
+	// });//ajax()
+	post_image();
+	// var loginBtn =$("input[name='Submit2']");
+	// console.log(loginBtn);
+	// //loginBtn[0].click();
+	// //if toggle is on : Login
+	// var toggle_state;
+	// chrome.storage.sync.get("toggle", function(result) {
+	//     toggle_state = result.toggle;
+	//     //console.log("toggle_state = " + toggle_state);
+	//     if (toggle_state === undefined) {
+	// 	console.log(toggle_state);
+	//     }
+	//     if (toggle_state == true && accountSet) {
+	// 	loginBtn[0].click();
+	// 	console.log("click");
+	// 	//window.alert = function() {};			
+	//     }
+	//     //window.alert = function() {};	
+	// });
+	
+	console.log("end test");
+	//     }
+	// }); 
+	
+	//}
+	
+    }//chrome ... function{
+			   ); //chrome...
+}
+
+
+//==================add================
+//++
+
+function post_image(){
+    var accountSet = true;
+    var img = document.getElementById("captcha");
+    var c = document.createElement('canvas');
+    c.width = img.width;
+    c.height = img.height;
+    var ctx = c.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+    
+    // image to base64
+    var base64String = c.toDataURL();
+    // debugger;
+    $.ajax({
+	method: 'POST',
+        url : "https://140.113.214.183:5000/predict",
+        data : {
+            image: base64String
+	},
+	success: function(data, status, jqXHR){
+	    console.log(status);
+	    if(data.startsWith("ERROR")) {
+		// var refreshBtn =$("#seccode_refresh");
+		// console.log(refreshBtn);
+		// refreshBtn[0].click();
+		// post_image();
+		// var loginBtn =$("input[name='Submit2']");
+		// console.log(loginBtn);
+		// //loginBtn[0].click();
+		// //if toggle is on : Login
+		// var toggle_state;
+		// chrome.storage.sync.get("toggle", function(result) {
+		//     toggle_state = result.toggle;
+		//     //console.log("toggle_state = " + toggle_state);
+		//     if (toggle_state === undefined) {
+		// 	console.log(toggle_state);
+		//     }
+		//     if (toggle_state == true && accountSet) {
+		// 	loginBtn[0].click();
+		// 	console.log("click");
+		// 	//window.alert = function() {};			
+		//     }
+		//     //window.alert = function() {};	
+		// });
+		//login();
+	    }else{
 
 		if ($("seccode") != null)
 		    document.getElementById("seccode").value = data;
@@ -207,6 +311,8 @@ function login() {
 		    console.log("can't find captcha");
 		}
 		var loginBtn =$("input[name='Submit2']");
+		console.log(loginBtn);
+		//loginBtn[0].click();
 		//if toggle is on : Login
 		var toggle_state;
 		chrome.storage.sync.get("toggle", function(result) {
@@ -216,54 +322,26 @@ function login() {
 			console.log(toggle_state);
 		    }
 		    if (toggle_state == true && accountSet) {
-			loginBtn.click();
-
+			loginBtn[0].click();
+			console.log("click");
 			//window.alert = function() {};			
 		    }
 		    //window.alert = function() {};	
 		});
-		}
 	    }
-	});//ajax()
-
-	
-	console.log("end test");
-	//     }
-	// }); 
-	
-	//}
-	
-    }
-			   );
-}
-
-
-//==================add================
-//++
-
-function post_image(){
-    var img = document.getElementById("captcha");
-    var c = document.createElement('canvas');
-    c.width = img.width;
-    c.height = img.height;
-    var ctx = c.getContext('2d');
-    ctx.drawImage(img, 0, 0);
-    
-    // image to base64
-	var base64String = c.toDataURL();
-	// debugger;
-    $.ajax({
-	method: 'POST',
-        url : "https://140.113.214.183:5000/predict",
-        data : {
-            image: base64String
-		},
-		success: function(data, status, jqXHR){
-			$("#seccode").val(data);
-		},
-		error: function(){
-			console.log("ERROR")
-		}
+	},
+	// error: function(){
+	//     console.log("ERROR");
+	//     var refreshBtn =$("#seccode_refresh");
+	//     console.log(refreshBtn);
+	//     //refreshBtn.click();
+	//     refreshBtn.click("", function() {
+	// 	console.log("call login");
+	// 	//$("#captcha").attr("src", "/captcha/pic.php?t=" + new Date().getTime());
+	// 	//login();
+	//     });
+	//     //post_image();
+	// }
     });
 }
 
