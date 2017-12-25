@@ -280,29 +280,36 @@ function post_image(){
 	success: function(data, status, jqXHR){
 	    console.log(status);
 	    if(data.startsWith("ERROR")) {
-		// var refreshBtn =$("#seccode_refresh");
-		// console.log(refreshBtn);
-		// refreshBtn[0].click();
-		// post_image();
-		// var loginBtn =$("input[name='Submit2']");
-		// console.log(loginBtn);
-		// //loginBtn[0].click();
-		// //if toggle is on : Login
-		// var toggle_state;
-		// chrome.storage.sync.get("toggle", function(result) {
-		//     toggle_state = result.toggle;
-		//     //console.log("toggle_state = " + toggle_state);
-		//     if (toggle_state === undefined) {
-		// 	console.log(toggle_state);
-		//     }
-		//     if (toggle_state == true && accountSet) {
-		// 	loginBtn[0].click();
-		// 	console.log("click");
-		// 	//window.alert = function() {};			
-		//     }
-		//     //window.alert = function() {};	
-		// });
+		var refreshBtn =$("#seccode_refresh");
+		console.log(refreshBtn);
+		refreshBtn[0].click();
+		
+		//post_image();
 		//login();
+				if ($("seccode") != null)
+		    document.getElementById("seccode").value = data;
+		else {
+		    console.log("can't find captcha");
+		}
+		var loginBtn =$("input[name='Submit2']");
+		console.log(loginBtn);
+		//loginBtn[0].click();
+		//if toggle is on : Login
+		var toggle_state;
+		chrome.storage.sync.get("toggle", function(result) {
+		    toggle_state = result.toggle;
+		    //console.log("toggle_state = " + toggle_state);
+		    if (toggle_state === undefined) {
+			console.log(toggle_state);
+		    }
+		    if (toggle_state == true && accountSet) {
+			loginBtn[0].click();
+			console.log("click");
+			//window.alert = function() {};			
+		    }
+		    //window.alert = function() {};	
+		});
+
 	    }else{
 
 		if ($("seccode") != null)
