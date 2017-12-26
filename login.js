@@ -71,6 +71,7 @@ function login() {
 		    refreshBtn[0].click();
 		    $("#captcha").ready(function() {
 		    	post_image();
+			    //login();
 		    })
 		    //post_image();
 		    //login();
@@ -133,6 +134,3 @@ function login() {
     }//chrome ... function{
 			   ); //chrome...
 }
-
-
-
