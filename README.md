@@ -10,4 +10,5 @@ Code are easy to understand, there have some keywords: [jquery] [.json]
 About install : https://www.youtube.com/watch?v=8E2wRbzF0Qc
 Add the extension to block alert : https://chrome.google.com/webstore/detail/alert-control/ofjjanaennfbgpccfpbghnmblpdblbef
 
+PPT DEMO : https://goo.gl/GmoCxY   
 It likes Schrödinger's cat, right?
