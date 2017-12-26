@@ -41,7 +41,7 @@ function login() {
 	    success: function(data, status, jqXHR){
 		//console.log(status);
 		
-		if(!(data.startsWith("ERROR!"))) {
+		if(!(data.startsWith("ERROR"))) {
 		    if ($("seccode") != null)
 			document.getElementById("seccode").value = data;
 		    else {
@@ -68,20 +68,11 @@ function login() {
 		} else {
 		    var refreshBtn =$("#seccode_refresh");
 		    console.log(refreshBtn);
-		    //refreshBtn[0].click();
-		    // $("#captcha").ready(function() {
-		    // 	//post_image();
-		    // 	//login();
-		    // 	// post image
-		    // 	// analyze data
-		    // 	// if success
-		    // 	//     flag = true
-		    // 	//     submit button
-		    // 	// else
-		    // 	//     
-		    // 	//     #refresh captcha button click
-		    // })
-		    post_image();
+		    refreshBtn[0].click();
+		    $("#captcha").ready(function() {
+		    	post_image();
+		    })
+		    //post_image();
 		    //login();
 		}
 	    }//success function
